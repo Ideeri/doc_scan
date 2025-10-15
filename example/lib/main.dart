@@ -1,4 +1,6 @@
 import 'package:doc_scan_flutter/doc_scan.dart';
+import 'package:doc_scan_flutter/doc_scan_format.dart';
+import 'package:doc_scan_flutter/doc_scan_exception.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -38,7 +40,7 @@ class _DocScanPageState extends State<DocScanPage> {
 
       final result = await DocScan.scan(format: _format);
       setState(() => _scannedFiles = result);
-    } on DocumentScannerException catch (e) {
+    } on DocScanException catch (e) {
       setState(() => _errorMessage = e.message);
     }
   }

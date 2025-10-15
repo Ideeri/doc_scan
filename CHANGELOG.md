@@ -1,3 +1,7 @@
+## 1.1.0
+
+* Plugin classes naming standard applied.
+
 ## 1.0.5
 
 * Make sure the Android code doesn't return URIs prefixed with `file://`, since they're not dart-friendly

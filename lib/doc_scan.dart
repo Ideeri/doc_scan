@@ -1,51 +1,19 @@
 import 'dart:async';
-import 'package:flutter/services.dart';
 
-/// Represents the format in which the document will be scanned.
-enum DocScanFormat {
-  /// Scans the document and saves it as a PDF file.
-  pdf,
-
-  /// Scans the document and saves it as a JPEG file.
-  jpeg,
-}
+import 'package:doc_scan_flutter/doc_scan_exception.dart';
+import 'package:doc_scan_flutter/doc_scan_format.dart';
+import 'package:doc_scan_flutter/doc_scan_platform_interface.dart';
 
 /// The main class for scanning documents.
-class DocumentScanner {
-  static const MethodChannel _channel = MethodChannel('doc_scan');
+class DocScan {
+  const DocScan._();
+
+  static final _platform = DocScanPlatformInterface.instance;
 
   /// Scans a document and returns the file path(s) of the scanned document(s).
   ///
-  /// Throws a [DocumentScannerException] if the scan fails.
+  /// Throws a [DocScanException] if the scan fails.
   static Future<List<String>?> scan({
     DocScanFormat format = DocScanFormat.jpeg,
-  }) async {
-    try {
-      final result = await _channel.invokeMethod('scanDocument', {
-        'format': format == DocScanFormat.pdf ? 'pdf' : 'jpeg',
-      });
-
-      if (result == null || result is! List) {
-        throw DocumentScannerException(
-          'Invalid response from native code, expected a List, got $result',
-        );
-      }
-
-      return result.cast<String>();
-    } on PlatformException catch (e) {
-      throw DocumentScannerException(e.message ?? 'Unknown error');
-    }
-  }
-}
-
-/// Exception thrown when the document scanning fails.
-class DocumentScannerException implements Exception {
-  /// Creates a [DocumentScannerException] with the given message.
-  DocumentScannerException(this.message);
-
-  /// The error message.
-  final String message;
-
-  @override
-  String toString() => 'DocumentScannerException: $message';
+  }) => _platform.scan(format: format);
 }
