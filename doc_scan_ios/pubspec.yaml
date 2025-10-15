@@ -1,0 +1,27 @@
+name: doc_scan_ios
+description: "A new Flutter plugin project."
+version: 0.0.1
+homepage:
+
+environment:
+  sdk: ^3.9.2
+  flutter: '>=3.3.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  doc_scan_platform_interface:
+    path: ../doc_scan_platform_interface
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^5.0.0
+
+flutter:
+  plugin:
+    implements: doc_scan_flutter
+    platforms:
+      ios:
+        pluginClass: DocScanPlugin
+        dartPluginClass: DocScanIOS
