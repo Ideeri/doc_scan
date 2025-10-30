@@ -16,7 +16,7 @@ Add this to your `pubspec.yaml`:
 
 ```yaml
 dependencies:
-  doc_scan_flutter: ^1.0.5
+  doc_scan_flutter: ^1.0.6
 ```
 
 Or, even better: 
