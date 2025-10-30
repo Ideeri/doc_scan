@@ -1,4 +1,5 @@
 import 'dart:async';
+
 import 'package:flutter/services.dart';
 
 /// Represents the format in which the document will be scanned.
@@ -26,9 +27,7 @@ class DocumentScanner {
       });
 
       if (result == null || result is! List) {
-        throw DocumentScannerException(
-          'Invalid response from native code, expected a List, got $result',
-        );
+        return null;
       }
 
       return result.cast<String>();
