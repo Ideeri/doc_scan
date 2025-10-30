@@ -1,6 +1,6 @@
 name: doc_scan_flutter
 description: "A Flutter plugin for scanning documents with automatic edge detection, cropping, and enhancement. Uses ML Kit on Android and VisionKit on iOS for high-quality scans."
-version: 1.0.5
+version: 1.0.6
 homepage: https://github.com/Ideeri/doc_scan
 repository: https://github.com/Ideeri/doc_scan.git
 issue_tracker: https://github.com/Ideeri/doc_scan/issues
