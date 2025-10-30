@@ -1,3 +1,8 @@
+## 1.0.6
+
+* Don't throw when the native code returns null, just return null
+* Bump dependencies
+
 ## 1.0.5
 
 * Make sure the Android code doesn't return URIs prefixed with `file://`, since they're not dart-friendly
