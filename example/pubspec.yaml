@@ -6,11 +6,11 @@ environment:
   sdk: ^3.12.0
 
 dependencies:
+  doc_scan_flutter:
+    path:
+      ../
   flutter:
     sdk: flutter
-
-  doc_scan_flutter:
-    path: ../
 
 dev_dependencies:
   very_good_analysis: ^10.2.0

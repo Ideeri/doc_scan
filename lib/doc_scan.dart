@@ -18,12 +18,10 @@ class DocumentScanner {
   /// Scans a document and returns the file path(s) of the scanned document(s).
   ///
   /// Throws a [DocumentScannerException] if the scan fails.
-  static Future<List<String>?> scan({
-    DocScanFormat format = DocScanFormat.jpeg,
-  }) async {
+  static Future<List<String>?> scan({DocScanFormat format = .jpeg}) async {
     try {
       final result = await _channel.invokeMethod('scanDocument', {
-        'format': format == DocScanFormat.pdf ? 'pdf' : 'jpeg',
+        'format': format == .pdf ? 'pdf' : 'jpeg',
       });
 
       if (result == null || result is! List) {

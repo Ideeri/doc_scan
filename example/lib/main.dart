@@ -37,7 +37,7 @@ class _DemoAppState extends State<DemoApp> {
       home: Scaffold(
         appBar: AppBar(title: const Text('Doc Scan Flutter - Demo App')),
         body: Padding(
-          padding: const .all(16.0),
+          padding: const .all(16),
           child: Column(
             crossAxisAlignment: .start,
             children: [
@@ -49,13 +49,13 @@ class _DemoAppState extends State<DemoApp> {
                       value: _format,
                       onChanged: (value) => setState(() => _format = value!),
                       items: const [
-                        DropdownMenuItem(value: .jpeg, child: Text("JPEG")),
-                        DropdownMenuItem(value: .pdf, child: Text("PDF")),
+                        DropdownMenuItem(value: .jpeg, child: Text('JPEG')),
+                        DropdownMenuItem(value: .pdf, child: Text('PDF')),
                       ],
                     ),
                   ),
 
-                  ElevatedButton(onPressed: _scan, child: const Text("Scan")),
+                  ElevatedButton(onPressed: _scan, child: const Text('Scan')),
                 ],
               ),
 
@@ -63,18 +63,18 @@ class _DemoAppState extends State<DemoApp> {
 
               if (_errorMessage != null)
                 Text(
-                  "Error: $_errorMessage",
+                  'Error: $_errorMessage',
                   style: const TextStyle(color: Colors.red),
                 ),
 
               if (_scannedFiles != null) ...[
-                Text("Scanned files:"),
-                ..._scannedFiles!.map((path) => Text(path)),
+                const Text('Scanned files:'),
+                ..._scannedFiles!.map(Text.new),
               ],
 
-              Spacer(),
+              const Spacer(),
 
-              Center(
+              const Center(
                 child: Column(
                   children: [
                     Text(
