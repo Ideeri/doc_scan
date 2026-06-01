@@ -10,9 +10,8 @@ Pod::Spec.new do |s|
   s.homepage         = 'https://github.com/Ideeri/doc_scan'
   s.license          = { :type => 'MIT', :file => '../LICENSE' }
   s.author           = { 'Martin STEFFEN' => 'mail@tiph.io' }
-  s.source           = { :path => '.' }
-  s.source_files = 'Classes/**/*'
   s.source           = { :http => 'https://github.com/Ideeri/doc_scan' }
+  s.source_files     = 'doc_scan_flutter/Sources/doc_scan_flutter/**/*.swift'
   s.dependency 'Flutter'
   s.platform = :ios, '12.0'
 
