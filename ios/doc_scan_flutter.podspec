@@ -4,14 +4,15 @@
 #
 Pod::Spec.new do |s|
   s.name             = 'doc_scan_flutter'
-  s.version          = '1.0.0'
+  s.version          = '2.0.0'
   s.summary          = 'A Flutter plugin for scanning documents using native APIs.'
   s.description      = 'This plugin allows scanning documents using ML Kit on Android and VisionKit on iOS.'
   s.homepage         = 'https://github.com/Ideeri/doc_scan'
-  s.license          = { :file => '../LICENSE' }
+  s.license          = { :type => 'MIT', :file => '../LICENSE' }
   s.author           = { 'Martin STEFFEN' => 'mail@tiph.io' }
   s.source           = { :path => '.' }
   s.source_files = 'Classes/**/*'
+  s.source           = { :http => 'https://github.com/Ideeri/doc_scan' }
   s.dependency 'Flutter'
   s.platform = :ios, '12.0'
 
