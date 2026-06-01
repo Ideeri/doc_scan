@@ -27,7 +27,6 @@ android {
     namespace = "fr.ideeri.doc_scan"
 
     compileSdk = 35
-    ndkVersion = "26.3.11579264" 
 
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_17
