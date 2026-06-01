@@ -2,34 +2,22 @@ import 'package:doc_scan_flutter/doc_scan.dart';
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(const DemoApp());
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+class DemoApp extends StatefulWidget {
+  const DemoApp({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    return const MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: DocScanPage(),
-    );
-  }
+  State<DemoApp> createState() => _DemoAppState();
 }
 
-class DocScanPage extends StatefulWidget {
-  const DocScanPage({super.key});
-
-  @override
-  State<DocScanPage> createState() => _DocScanPageState();
-}
-
-class _DocScanPageState extends State<DocScanPage> {
-  DocScanFormat _format = DocScanFormat.jpeg;
+class _DemoAppState extends State<DemoApp> {
+  DocScanFormat _format = .jpeg;
   List<String>? _scannedFiles;
   String? _errorMessage;
 
-  Future<void> _scanDocument() async {
+  Future<void> _scan() async {
     try {
       setState(() {
         _scannedFiles = null;
@@ -45,43 +33,62 @@ class _DocScanPageState extends State<DocScanPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: const Text('Doc Scan')),
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Column(
-          children: [
-            const Text("Scan a document with custom options:"),
-            const SizedBox(height: 20),
+    return MaterialApp(
+      home: Scaffold(
+        appBar: AppBar(title: const Text('Doc Scan Flutter - Demo App')),
+        body: Padding(
+          padding: const .all(16.0),
+          child: Column(
+            crossAxisAlignment: .start,
+            children: [
+              Row(
+                spacing: 24,
+                children: [
+                  Expanded(
+                    child: DropdownButton<DocScanFormat>(
+                      value: _format,
+                      onChanged: (value) => setState(() => _format = value!),
+                      items: const [
+                        DropdownMenuItem(value: .jpeg, child: Text("JPEG")),
+                        DropdownMenuItem(value: .pdf, child: Text("PDF")),
+                      ],
+                    ),
+                  ),
 
-            // Format Selection
-            DropdownButton<DocScanFormat>(
-              value: _format,
-              onChanged: (value) => setState(() => _format = value!),
-              items: const [
-                DropdownMenuItem(
-                  value: DocScanFormat.jpeg,
-                  child: Text("JPEG"),
-                ),
-                DropdownMenuItem(value: DocScanFormat.pdf, child: Text("PDF")),
-              ],
-            ),
-
-            const SizedBox(height: 20),
-            ElevatedButton(
-              onPressed: _scanDocument,
-              child: const Text("Scan Document"),
-            ),
-            const SizedBox(height: 20),
-
-            if (_errorMessage != null)
-              Text(
-                "Error: $_errorMessage",
-                style: const TextStyle(color: Colors.red),
+                  ElevatedButton(onPressed: _scan, child: const Text("Scan")),
+                ],
               ),
-            if (_scannedFiles != null)
-              ..._scannedFiles!.map((path) => Text(path)),
-          ],
+
+              const SizedBox(height: 20),
+
+              if (_errorMessage != null)
+                Text(
+                  "Error: $_errorMessage",
+                  style: const TextStyle(color: Colors.red),
+                ),
+
+              if (_scannedFiles != null) ...[
+                Text("Scanned files:"),
+                ..._scannedFiles!.map((path) => Text(path)),
+              ],
+
+              Spacer(),
+
+              Center(
+                child: Column(
+                  children: [
+                    Text(
+                      'Demo application, and library made with ❤️ by Ideeri',
+                    ),
+                    Text(
+                      'github.com/Ideeri/doc_scan',
+                      style: TextStyle(fontFamily: 'monospace'),
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );
