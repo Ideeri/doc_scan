@@ -13,7 +13,7 @@ topics:
   - mlkit
 
 environment:
-  sdk: ^3.7.0
+  sdk: ^3.12.0
   flutter: '>=3.3.0'
 
 dependencies:
