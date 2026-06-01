@@ -1,3 +1,11 @@
+## 2.0.0
+
+- Updates minimum supported SDK version to Flutter 3.44/Dart 3.12.
+- Migrates to built-in Kotlin
+- Swift Package Manager support
+- Refactor / clean / upgrade the example app
+- Refactor / clean / upgrade the core lib code
+
 ## 1.0.6
 
 * Don't throw when the native code returns null, just return null
